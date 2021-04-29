@@ -1,0 +1,32 @@
+[[plugins]]
+  package = "netlify-plugin-gatsby-cache"
+  
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-XSS-Protection = "1; mode=block"
+
+
+# Specific branch context: all deploys from this specific branch will inherit
+# these settings.
+
+[context.main]
+  command = "echo 'main'"
+  base = "main"
+
+[context.main.environment]
+  NODE_ENV = "production"
+
+[context.test]
+  command = "echo 'test'"
+  base = "test"
+
+[context.test.environment]
+  NODE_ENV = "test"
+
+[context.develop]
+  command = "echo 'develop'"
+  base = "develop"
+
+[context.develop.environment]
+  NODE_ENV = "develop"
